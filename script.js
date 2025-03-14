@@ -21,12 +21,23 @@ document.getElementById('parse-form').addEventListener('submit', (event) => {
 	}).then(response => response.json()).then(datas => {
 		if (datas) {
 			if (datas.code == 1) {
-				resultDiv.innerHTML = '<p>标题：' + datas.title + '</p>' + '<p>作者：' + datas.name +
-					'</p>' +
-					'<p>封面：<img src="' + datas.cover + '" alt="' + datas.title + '" /></p>' +
-					'<p>地址：<a href="' + datas.video +
-					'" target="_blank" rel="noopener noreferrer">点击预览或下载视频</a></p>';
 				document.body.style.backgroundImage = 'url(' + datas.cover + ')';
+				document.getElementById('cover').src = datas.cover;
+				document.getElementById('ccover').value = datas.cover;
+				document.getElementById('name').innerText = '@' + datas.name;
+				document.getElementById('title').innerText = datas.title;
+				document.getElementById('cname').value = datas.name;
+				document.getElementById('ctitle').value = datas.title;
+				document.getElementById('cvideo').value = datas.video;
+				document.getElementById('lcover').href = datas.cover;
+				document.getElementById('lvideo').href = datas.video;
+				const downtitle = '(抖音) - ' + datas.name + ' - ' + datas
+					.title;
+				document.getElementById('dcover').href = datas.cover;
+				document.getElementById('dcover').download = '封面' + downtitle;
+				document.getElementById('dvideo').href = datas.video;
+				document.getElementById('dvideo').download = '视频' + downtitle;
+				document.getElementById('content').style.display = 'block';
 				console.log(datas)
 			} else if (datas.code == 0) {
 				resultDiv.innerHTML = '<p style="color: var(--primary-color);">' + datas.msg +
@@ -44,3 +55,16 @@ document.getElementById('parse-form').addEventListener('submit', (event) => {
 		stbt.innerText = '开始解析';
 	})
 });
+const copy = (e) => {
+	const value = e.previousElementSibling.value;
+	if (value) {
+		navigator.clipboard.writeText(value);
+		alert('复制成功！');
+	} else {
+		alert('复制失败，未获取到密钥！');
+	}
+}
+const chose = (e) => {
+	e.select();
+	e.setSelectionRange(0, 99999);
+}

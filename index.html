@@ -11,7 +11,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="./icon.png" />
 		<link rel="stylesheet" href="./style.css" />
 	</head>
-	<body>
+	<body oncontextmenu="return false">
 		<div class="container">
 			<!-- 头部 -->
 			<header class="header">
@@ -26,8 +26,39 @@
 						<button type="submit" id="stbt">开始解析</button>
 					</div>
 				</form>
-				<div id="result" class="result">
-					<!-- 解析结果将显示在这里 -->
+				<div id="content">
+					<div class="result">
+						<img id="cover" src="./img/sorry.svg" />
+						<h2 id="name">作者获取失败 - φ(*￣0￣)</h2>
+						<p id="title">标题获取失败 - φ(*￣0￣)</p>
+						<!-- 解析结果将显示在这里 -->
+					</div>
+					<div class="input-span">
+						<span class="span">标题</span>
+						<input readonly class="control" type="text" id="ctitle" value="获取失败 - φ(*￣0￣)"
+							onclick="chose(this)" />
+						<span class="span" onclick="copy(this)">复制</span>
+					</div>
+					<div class="input-span">
+						<span class="span">作者</span>
+						<input readonly class="control" type="text" id="cname" value="获取失败 - φ(*￣0￣)"
+							onclick="chose(this)" />
+						<span class="span" onclick="copy(this)">复制</span>
+					</div>
+					<div class="input-span">
+						<span class="span">封面</span>
+						<input readonly class="control" type="text" id="ccover" value="获取失败 - φ(*￣0￣)"
+							onclick="chose(this)" />
+						<a title="查看封面" target="_blank" rel="noopener noreferrer" class="span" id="lcover">查看</a>
+					</div>
+					<div class="input-span">
+						<span class="span">视频</span>
+						<input readonly class="control" type="text" id="cvideo" value="获取失败 - φ(*￣0￣)"
+							onclick="chose(this)" />
+						<a title="查看视频" target="_blank" rel="noopener noreferrer" class="span" id="lvideo">查看</a>
+					</div>
+					<a target="_blank" rel="noopener noreferrer" class="btn" id="dcover">下载封面</a>
+					<a target="_blank" rel="noopener noreferrer" class="btn" id="dvideo">下载视频</a>
 				</div>
 			</main>
 			<!-- 底部 -->

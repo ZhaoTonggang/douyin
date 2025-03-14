@@ -1,52 +1,57 @@
 /* 基础样式 */
 :root {
 	--primary-color: #d93a49;
-	/* 朱红：主色调 */
-	--secondary-color: #2a5caa;
-	/* 黛青：辅助色 */
+	--secondary-color: #000000;
 	--background-color: #f0f3f5;
-	/* 月白：背景色 */
 	--text-color: #333333;
-	/* 墨黑：文字颜色 */
 	--accent-color: #00a381;
-	/* 竹青：点缀色 */
-	--border-radius: 0.5rem;
-	/* 圆角 */
+	--border-radius: 5px;
 }
 
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	font-family: 'PingFang SC', 'SimSun', sans-serif;
 	text-decoration: none;
 	user-select: none;
 	scroll-behavior: smooth;
 	transition: all 1s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
 }
 
 html {
 	font-size: 16px;
-	background-color: var(--background-color);
-	color: var(--text-color);
 }
 
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background: #66a9c9 url('./background.svg') no-repeat center/cover fixed;
+	background: #66a9c9 url('./img/background.svg') no-repeat center/cover fixed;
+}
+
+select {
+	border-radius: 0 5px 5px 0;
+}
+
+select:hover {
+	cursor: pointer;
+}
+
+option {
+	font-weight: bold;
 }
 
 .container {
-	width: 90%;
-	max-width: 40rem;
+	width: 95%;
+	max-width: 45rem;
 	background: rgba(233, 215, 223, 0.9);
-	padding: 2rem;
+	padding: 1rem;
 	border-radius: var(--border-radius);
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 	text-align: center;
+	margin: 0 auto;
 }
 
 .header h1 {
@@ -54,7 +59,7 @@ body {
 	margin: 0;
 	color: var(--primary-color);
 	font-family: 'SimSun', serif;
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
 }
 
 .header p {
@@ -73,12 +78,11 @@ body {
 
 #video-url {
 	flex: 1;
-	padding: 0.75rem;
+	padding: 0.5rem;
 	font-size: 1rem;
-	border: 1px solid var(--secondary-color);
+	border: 0.1rem solid var(--secondary-color);
 	border-radius: var(--border-radius);
 	outline: none;
-	transition: border-color 0.3s ease;
 }
 
 #video-url:focus {
@@ -86,34 +90,56 @@ body {
 }
 
 button {
-	padding: 0.75rem;
+	padding: 0.5rem;
 	font-size: 1rem;
 	background-color: var(--primary-color);
 	color: white;
 	border: none;
 	border-radius: var(--border-radius);
 	cursor: pointer;
-	transition: background-color 0.3s ease;
 }
 
 button:hover {
 	background-color: var(--accent-color);
 }
 
-.result {
+#content {
 	margin-top: 2rem;
 	font-size: 1rem;
-	text-align: left;
-	color: var(--text-color);
-	padding: 1rem;
-	background-color: #f9f4dc;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	display: none;
+}
+
+.result {
+	position: relative;
 	border-radius: var(--border-radius);
 	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .result img {
 	width: 100%;
-	border-radius: 0.5rem;
+	border-radius: 5px;
+}
+
+.result h2,
+.result p {
+	position: absolute;
+	text-shadow: 0.2rem 0.2rem 0.5rem #000;
+	margin: 0 1rem;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.result h2 {
+	bottom: 2.5rem;
+}
+
+.result p {
+	bottom: 1rem;
 }
 
 .result a {
@@ -124,6 +150,164 @@ button:hover {
 
 .result a:hover {
 	text-decoration: underline;
+}
+
+.control {
+	display: block;
+	width: 100%;
+	color: #000;
+	background-color: #cdffcd;
+	border: 0.1rem solid #ccc;
+	-webkit-box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.075);
+	height: 3rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1rem;
+	cursor: copy;
+}
+
+.control:hover,
+.control:focus {
+	border-color: #5cb85c;
+	outline: 0;
+	-webkit-box-shadow: inset 0 0.2rem 0.1rem rgba(0, 0, 0, 0.1), 0 0 0.2rem rgba(92, 184, 92, 0.6);
+	box-shadow: inset 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1), 0 0 0.5rem rgba(92, 184, 92, 0.6)
+}
+
+.control::-moz-placeholder {
+	color: #999;
+	opacity: 1
+}
+
+.control:-ms-input-placeholder {
+	color: #999
+}
+
+.control::-webkit-input-placeholder {
+	color: #999
+}
+
+.control::-ms-expand {
+	background-color: transparent;
+	border: 0
+}
+
+.btn {
+	padding: 0.5rem;
+	margin: 0.5rem 0;
+	font-size: 1.2rem;
+	font-weight: bold;
+	line-height: 1.2rem;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 0.1rem solid transparent;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	display: block;
+}
+
+.btn:focus {
+	color: #fff;
+	background-color: #449d44;
+	border-color: #255625;
+}
+
+.btn:focus,
+.btn:active:focus {
+	outline: thin dotted;
+	outline: 0.5rem auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+.span:last-child:hover,
+.btn:hover {
+	background-color: #449d44;
+	border-color: #398439;
+}
+
+.span:last-child:hover,
+.btn:hover,
+.btn:focus {
+	color: #000;
+	text-decoration: none;
+}
+
+.btn:active {
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 0.2rem 0.5rem rgba(0, 0, 0, .125);
+	box-shadow: inset 0 0.2rem 0.5rem rgba(0, 0, 0, .125);
+	color: #fff;
+	background-color: #449d44;
+	border-color: #398439;
+}
+
+.btn:active:hover,
+.btn:active:focus {
+	color: #fff;
+	background-color: #398439;
+	border-color: #255625;
+}
+
+.btn[disabled] {
+	cursor: not-allowed;
+	filter: alpha(opacity=65);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	opacity: .65;
+}
+
+.input-span {
+	width: 100%;
+	position: relative;
+	display: table;
+	border-collapse: separate;
+	margin: 10px 0;
+	font-weight: bold;
+}
+
+.span {
+	width: 10%;
+	white-space: nowrap;
+	vertical-align: middle;
+	line-height: 1rem;
+	text-align: center;
+	border: 0.1rem solid #ccc;
+	display: table-cell;
+	height: 3rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+	border-radius: 5px
+}
+
+.span:first-child {
+	color: #000;
+	background-color: #fff8b5;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: 0
+}
+
+.span:last-child {
+	color: white;
+	background-color: #5cb85c;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: 0;
+	cursor: pointer
 }
 
 .footer {

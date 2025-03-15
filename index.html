@@ -7,65 +7,57 @@
 		<meta name="keywords" content="抖音解析,无水印解析,抖音去水印,在线去水印,抖音">
 		<meta name="description" content="抖音无水印解析服务，抖音无水印视频，抖音视频封面，抖音视频配乐等免费提取和下载！">
 		<meta name="author" content="赵彤刚,2585649532@qq.com" />
-		<meta name="theme-color" content="#66a9c9">
+		<meta name="theme-color" content="#d93a49">
 		<link rel="icon" type="image/png" sizes="32x32" href="./icon.png" />
 		<link rel="stylesheet" href="./style.css" />
 	</head>
-	<body oncontextmenu="return false">
+	<body>
 		<div class="container">
 			<!-- 头部 -->
-			<header class="header">
-				<h1>抖音无水印解析</h1>
-				<p>输入抖音的分享链接，快速解析并下载无水印视频</p>
-			</header>
+			<h1 class="sh">抖音无水印解析</h1>
+			<p class="sp">输入抖音的分享链接，快速解析并下载无水印视频</p>
 			<!-- 主要内容 -->
-			<main class="main-content">
-				<form id="parse-form">
-					<div class="input-group">
-						<input type="text" id="video-url" placeholder="请输入抖音的分享链接(无需去除文字)" required>
-						<button type="submit" id="stbt">开始解析</button>
-					</div>
-				</form>
-				<div id="content">
-					<div class="result">
-						<img id="cover" src="./img/sorry.svg" />
-						<h2 id="name">作者获取失败 - φ(*￣0￣)</h2>
-						<p id="title">标题获取失败 - φ(*￣0￣)</p>
-						<!-- 解析结果将显示在这里 -->
-					</div>
-					<div class="input-span">
-						<span class="span">标题</span>
-						<input readonly class="control" type="text" id="ctitle" value="获取失败 - φ(*￣0￣)"
-							onclick="chose(this)" />
-						<span class="span" onclick="copy(this)">复制</span>
-					</div>
-					<div class="input-span">
-						<span class="span">作者</span>
-						<input readonly class="control" type="text" id="cname" value="获取失败 - φ(*￣0￣)"
-							onclick="chose(this)" />
-						<span class="span" onclick="copy(this)">复制</span>
-					</div>
-					<div class="input-span">
-						<span class="span">封面</span>
-						<input readonly class="control" type="text" id="ccover" value="获取失败 - φ(*￣0￣)"
-							onclick="chose(this)" />
-						<a title="查看封面" target="_blank" rel="noopener noreferrer" class="span" id="lcover">查看</a>
-					</div>
-					<div class="input-span">
-						<span class="span">视频</span>
-						<input readonly class="control" type="text" id="cvideo" value="获取失败 - φ(*￣0￣)"
-							onclick="chose(this)" />
-						<a title="查看视频" target="_blank" rel="noopener noreferrer" class="span" id="lvideo">查看</a>
-					</div>
-					<a target="_blank" rel="noopener noreferrer" class="btn" id="dcover">下载封面</a>
-					<a target="_blank" rel="noopener noreferrer" class="btn" id="dvideo">下载视频</a>
+			<form id="parse-form" method="post">
+				<input type="search" id="video-url" placeholder="请输入抖音的分享链接(无需去除文字)" required autofocus />
+				<input type="submit" id="stbt" value="开始解析" />
+			</form>
+			<div id="content">
+				<div class="result">
+					<img id="cover" src="./img/sorry.svg" />
+					<h2 id="name">作者获取失败 - φ(*￣0￣)</h2>
+					<p id="title">标题获取失败 - φ(*￣0￣)</p>
+					<!-- 解析结果将显示在这里 -->
 				</div>
-			</main>
+				<div class="input-span">
+					<span class="span">标题</span>
+					<input readonly class="control" type="text" id="ctitle" value="获取失败 - φ(*￣0￣)"
+						onclick="chose(this)" />
+					<span class="span" onclick="copy(this)">复制</span>
+				</div>
+				<div class="input-span">
+					<span class="span">作者</span>
+					<input readonly class="control" type="text" id="cname" value="获取失败 - φ(*￣0￣)"
+						onclick="chose(this)" />
+					<span class="span" onclick="copy(this)">复制</span>
+				</div>
+				<div class="input-span">
+					<span class="span">封面</span>
+					<input readonly class="control" type="text" id="ccover" value="获取失败 - φ(*￣0￣)"
+						onclick="chose(this)" />
+					<a title="查看封面" target="_blank" rel="noopener noreferrer" class="span" id="lcover">查看</a>
+				</div>
+				<div class="input-span">
+					<span class="span">视频</span>
+					<input readonly class="control" type="text" id="cvideo" value="获取失败 - φ(*￣0￣)"
+						onclick="chose(this)" />
+					<a title="查看视频" target="_blank" rel="noopener noreferrer" class="span" id="lvideo">查看</a>
+				</div>
+				<a target="_blank" rel="noopener noreferrer" class="btn" id="dcover">下载封面</a>
+				<a target="_blank" rel="noopener noreferrer" class="btn" id="dvideo">下载视频</a>
+			</div>
 			<!-- 底部 -->
-			<footer class="footer">
-				<p>本站提供免费API，如需调用请<a href="./api/">点击查看</a></p>
-				<p>由<a href="https://my.heheda.top" target="_blank" rel="noopener noreferrer">赵彤刚</a>提供技术支持</p>
-			</footer>
+			<p class="epa">本站提供免费API，如需调用请<a href="./api/">点击查看</a></p>
+			<p class="epb">由<a href="https://my.heheda.top" target="_blank" rel="noopener noreferrer">赵彤刚</a>提供技术支持</p>
 		</div>
 		<script defer src="./script.js"></script>
 		<!-- 谷歌自动广告 -->
@@ -75,6 +67,5 @@
 		<noscript>
 			<h1>本站功能实现依赖了大量JS，您的浏览器不支持或未启用JS！</h1>
 		</noscript>
-	</body>
 	</body>
 </html>

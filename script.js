@@ -1,5 +1,6 @@
-document.getElementById('parse-form').addEventListener('submit', (event) => {
-	event.preventDefault();
+// 监听提交
+document.getElementById('parse-form').onsubmit = (e) => {
+	e.preventDefault();
 	// 使用正则表达式匹配URL
 	const videoUrl = document.getElementById('video-url').value.match(
 		/https:\/\/v\.douyin\.com\/[a-zA-Z0-9]+\//)?.[0];
@@ -10,7 +11,8 @@ document.getElementById('parse-form').addEventListener('submit', (event) => {
 	document.getElementById('video-url').value = videoUrl;
 	const resultDiv = document.getElementById('result');
 	const stbt = document.getElementById('stbt');
-	stbt.innerText = '正在解析';
+	stbt.disabled = true;
+	stbt.value = '正在解析';
 	fetch('https://php-api.heheda.top/jiexi/douyin/', {
 		body: 'url=' + videoUrl,
 		method: 'POST',
@@ -33,10 +35,12 @@ document.getElementById('parse-form').addEventListener('submit', (event) => {
 				document.getElementById('lvideo').href = datas.video;
 				const downtitle = '(抖音) - ' + datas.name + ' - ' + datas
 					.title;
-				document.getElementById('dcover').href = datas.cover;
-				document.getElementById('dcover').download = '封面' + downtitle;
-				document.getElementById('dvideo').href = datas.video;
-				document.getElementById('dvideo').download = '视频' + downtitle;
+				const dcover = document.getElementById('dcover');
+				dcover.href = datas.cover;
+				dcover.download = '封面' + downtitle;
+				const dvideo = document.getElementById('dvideo');
+				dvideo.href = datas.video;
+				dvideo.download = '视频' + downtitle;
 				document.getElementById('content').style.display = 'block';
 				console.log(datas)
 			} else if (datas.code == 0) {
@@ -49,12 +53,14 @@ document.getElementById('parse-form').addEventListener('submit', (event) => {
 		} else {
 			resultDiv.innerHTML = '<p style="color: var(--primary-color);">算法可能失效，请联系管理员维护！</p>';
 		}
-		stbt.innerText = '开始解析';
+		stbt.value = '开始解析';
+		stbt.disabled = false;
 	}).catch(err => {
 		resultDiv.innerHTML = '<p style="color: var(--primary-color);">出现错误：' + err + '</p>';
-		stbt.innerText = '开始解析';
+		stbt.value = '开始解析';
+		stbt.disabled = false;
 	})
-});
+}
 const copy = (e) => {
 	const value = e.previousElementSibling.value;
 	if (value) {

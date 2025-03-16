@@ -33,7 +33,7 @@ html {
 }
 
 body {
-	background: #66a9c9 url('./img/background.svg') no-repeat center/cover fixed;
+	background: #00a381 url('./img/background.svg') no-repeat center/cover fixed;
 }
 
 select {
